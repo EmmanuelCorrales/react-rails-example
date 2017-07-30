@@ -1,20 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
+  subject { described_class.new }
 
   it "is valid with valid attributes" do
-    question = Question.new(content: "What is your name?", answer: "Emmanuel Corrales")
-    expect(question).to be_valid
+    subject.content = "What is your name?"
+    subject.answer  = "Emmanuel Corrales"
+    expect(subject).to be_valid
   end
 
   it "is not valid without content" do
-    question = Question.new(content: nil)
-    expect(question).to_not be_valid
+    subject.answer = "Emmanuel Corrales"
+    expect(subject).to_not be_valid
   end
 
-  it "is not valid without answer"do
-    question = Question.new(answer: nil)
-    expect(question).to_not be_valid
+  it "is not valid without answer" do
+    subject.content = "What is your name?"
+    expect(subject).to_not be_valid
   end
 
 end
