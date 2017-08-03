@@ -4,12 +4,17 @@ var Questions = React.createClass({
     this.props.handleDelete(id);
   },
 
+  onUpdate(question) {
+    this.props.onUpdate(question);
+  },
+
   render() {
 		var questions = this.props.questions.map((question) => {
 			return (
 				<div key={question.id}>
-					<h3>{question.content}</h3>
-          <button onClick={this.handleDelete.bind(this, question.id)} >Delete</button>
+          <Question question={question}
+            handleDelete={this.handleDelete.bind(this, question.id)}
+            handleUpdate={this.onUpdate} />
 				</div>
 			)
 		});

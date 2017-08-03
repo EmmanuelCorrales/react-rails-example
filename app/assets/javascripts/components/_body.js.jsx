@@ -23,6 +23,26 @@ var Body = React.createClass({
     this.setState({ questions: newState });
   },
 
+  handleUpdate(question) {
+    $.ajax({
+      url: `/api/questions/${question.id}`,
+      type: 'PUT',
+      data: { question: question },
+      success: () => {
+        this.updateQuestions(question);
+      }
+    });
+  },
+
+  updateQuestions(question) {
+    var questions = this.state.questions.filter(
+        (q) => { return question.id != q.id }
+    );
+    questions.push(question);
+
+    this.setState({questions: questions});
+  },
+
   handleDelete(id) {
     console.log('Delete question clicked.');
     $.ajax({
@@ -47,7 +67,9 @@ var Body = React.createClass({
     return (
       <div>
         <NewQuestion handleSubmit={this.handleSubmit} />
-        <Questions questions={this.state.questions} handleDelete={this.handleDelete} />
+        <Questions questions={this.state.questions}
+          handleDelete={this.handleDelete}
+          onUpdate={this.handleUpdate} />
       </div>
     )
   }
