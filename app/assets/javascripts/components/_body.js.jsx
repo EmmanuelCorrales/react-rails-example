@@ -67,6 +67,7 @@ var Body = React.createClass({
     return (
       <div>
         <NewQuestion handleSubmit={this.handleSubmit} />
+        <br/>
         <Questions questions={this.state.questions}
           handleDelete={this.handleDelete}
           onUpdate={this.handleUpdate} />

@@ -19,21 +19,23 @@ var Question = React.createClass({
   render() {
     var content = this.state.editable ? 
       <input type='text' ref='content' defaultValue={this.props.question.content} /> :
-        <h3>{this.props.question.content}</h3>;
+        <p>{this.props.question.content}</p>;
 
     var answer = this.state.editable ? 
       <input type='text' ref='answer'  defaultValue={this.props.question.answer} /> :
-        <h3>{this.props.question.answer}</h3>;
+        <p>{this.props.question.answer}</p>;
 
     return (
-      <div>
-        {content}
-        {answer}
-        <button onClick={this.props.handleDelete} >Delete</button>
-        <button onClick={this.handleEdit}>
-          {this.state.editable ? 'Submit' : 'Edit'}
-        </button>
-      </div>
+      <tr>
+        <td>{content}</td>
+        <td>{answer}</td>
+        <td><button onClick={this.props.handleDelete} >Delete</button></td>
+        <td>
+          <button onClick={this.handleEdit}>
+            {this.state.editable ? 'Update' : 'Edit'}
+          </button>
+        </td>
+      </tr>
     )
   }
 });

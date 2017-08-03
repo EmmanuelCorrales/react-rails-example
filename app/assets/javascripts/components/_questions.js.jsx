@@ -11,14 +11,25 @@ var Questions = React.createClass({
   render() {
 		var questions = this.props.questions.map((question) => {
 			return (
-				<div key={question.id}>
-          <Question question={question}
-            handleDelete={this.handleDelete.bind(this, question.id)}
-            handleUpdate={this.onUpdate} />
-				</div>
+        <Question key={question.id} question={question}
+          handleDelete={this.handleDelete.bind(this, question.id)}
+          handleUpdate={this.onUpdate} />
 			)
 		});
 
-    return(<div>{questions}</div>)
+    return(
+      <div>
+        <h3>List of Q&A</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Questions</th>
+              <th>Answers</th>
+            </tr>
+          </thead>
+          <tbody>{questions}</tbody>
+        </table>
+      </div>
+    )
   }
 });

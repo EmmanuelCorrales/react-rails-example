@@ -17,9 +17,10 @@ var NewQuestion = React.createClass({
   render() {
     return (
       <div>
+        <h3>New question.</h3>
         <input ref='content' placeholder='Question'/>
         <input ref='answer' placeholder='Answer'/>
-        <button onClick={this.handleClick}>Submit</button>
+        <button onClick={this.handleClick}>Add</button>
       </div>
     )
   }
