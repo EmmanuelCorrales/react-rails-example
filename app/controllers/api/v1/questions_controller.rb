@@ -14,7 +14,8 @@ class Api::V1::QuestionsController < ApiController
   end
 
   def update
-    @question.save(question_params)
+    question = Question.find(params[:id])
+    @question.update_attributes(question_params)
     respond_with @question, json: @question
   end
 
