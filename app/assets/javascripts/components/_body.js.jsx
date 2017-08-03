@@ -17,9 +17,16 @@ var Body = React.createClass({
     );
   },
 
+  handleSubmit(question) {
+    console.log(question);
+    var newState = this.state.questions.concat(question);
+    this.setState({ questions: newState });
+  },
+
   render() {
     return (
       <div>
+        <NewQuestion handleSubmit={this.handleSubmit} />
         <Questions questions={this.state.questions} />
       </div>
     )
