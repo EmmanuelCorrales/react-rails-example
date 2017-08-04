@@ -9,7 +9,7 @@ var Body = React.createClass({
   },
 
   render() {
-    var quiz = <div>QUIZ MODE</div>;
+    var quiz = <Quiz/>
     var management = <Management/>
 
     return (
